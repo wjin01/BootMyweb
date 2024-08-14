@@ -1,0 +1,206 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<th:block th:replace="~{./include/noticeBaseLayout :: noticeSetContent( ~{ ::.wrap } ) }">
+	<div class="wrap">
+		<div class="warp_inner">
+
+			<!-- left_menu end -->
+			<div class="right_content">
+				
+				<div class="midiaq">
+					<div class="mainWrapper"> 
+						<div class="ipssGiudeBlock" style="color:red; font-size: large;">
+							-요구사항<br>
+							-판매자공지에 대한 CRUD작업을 연습합니다.<br>
+							-판매자관리자에서 판매자공지를 등록하면, 사용자 페이지에서 해당상품에 따른 공지가 보여진다고 가정합니다.<br>
+							-상품의 제목, 내용, 등록일 기간으로 검색이 가능하다.<br>
+							-공지등록여부 는 비동기를 통해 즉시 업데이트 처리할 수 있다.<br>
+						</div>
+					</div>
+					<div class="page_title">관리자검색</div>
+					
+					<form name="###########" action="############" method="get" >
+					<div class="search_block flfull">
+
+						<div class="fl">
+							<div>
+								<span class="search_th">제목 검색</span>
+								<input type="text" class="" placeholder="공지제목 검색">
+							</div>
+							
+							<div>
+								<span class="search_th">내용 검색</span>
+								<input type="text" class="" placeholder="공지내용 검색">
+							</div>
+
+							<div>
+								<span class="search_th">닉네임 검색</span>
+								<input type="text" class="" placeholder="닉네임 검색">
+							</div>
+
+							<!-- 2row -->
+							<div class="pdt15"></div>
+							<div>
+								<span class="search_th">등록일조회</span>
+								<input type="text" class="datepicker" readonly placeholder="날짜선택" /> -
+								<input type="text" class="datepicker" readonly placeholder="날짜선택" />
+							</div>
+							<!-- 
+							<div>
+								<span class="search_th">처리자 ID</span>
+								<input type="text" class="" placeholder="처리자 ID">
+							</div>
+							 -->
+
+						</div>
+
+						<div class="fr">
+							<div class="search_btn_area">
+								<a href="#" class="normal_btn purplebtn">검색</a>
+								<a href="#" class="normal_btn purplebtn02">등록</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="full_collum collum">
+						<ul>
+							<li class="collum_tit">
+								<h2>판매자공지관리</h2>
+
+								<select class="">
+									<option value="10">10개 보기</option>
+									<option value="20">20개 보기</option>
+									<option value="40">40개 보기</option>
+									<option value="80">80개 보기</option>
+								</select>
+								<span class="showtoggle minus"></span>
+								<ul>
+									<li>
+										<table cellpadding="0" cellspacing="0" class="row_tb_11" width="100%;">
+											<tr>
+												<th>순서</th>
+												<th>공지등록여부</th>
+												<th>아이디</th>
+												<th>닉네임</th>
+												<th>상품명</th>
+												<th>제목</th>
+												<th>내용</th>
+												<th>등록일</th>
+											</tr>
+												
+											<tr>
+												<td>1</td>
+												<td>표시</td>
+												<td>admin</td>
+												<td>홍길동</td>
+												<td>비타육백</td>
+												<td>
+													<a title="상세보기(클릭)" href="#">비타오백 판매자공지</a>
+												</td>
+												<td>설연휴 공지입니다. 설연휴 부득이한....</td>
+												<td>2016-01-01</td>
+											</tr>
+										</table>
+
+
+										<div class="page">
+											<ul>
+												<li><a href="#"><i class="fa fa-angle-double-left"
+															aria-hidden="true"></i></a></li>
+												<li style="margin-right:5px;"><a href="#"><i class="fa fa-angle-left"
+															aria-hidden="true"></i></a></li>
+												<li class="on"><a href="#">1</a></li>
+												<li><a href="#">2</a></li>
+												<li><a href="#">3</a></li>
+												<li><a href="#">4</a></li>
+												<li><a href="#">5</a></li>
+												<li style="margin-left:5px;"><a href="#"><i class="fa fa-angle-right"
+															aria-hidden="true"></i></a></li>
+												<li><a href="#"><i class="fa fa-angle-double-right"
+															aria-hidden="true"></i></a></li>
+											</ul>
+										</div>
+									</li>
+
+								</ul>
+							</li>
+						</ul>
+					</div>
+					</form>
+
+				</div>
+			</div>
+		</div>
+
+		<!-- 모달창 -->
+		<div id="basicModal" class="modal-overlay">
+			<div class="modal-content">
+				<div class="modalOff">X</div>
+				<p class="title">이미지수정</p>
+	
+				<div class="content">
+					<div class="sub-form">
+						<!--미리보기 폼-->
+						<div class="filebox preview-image">
+							<!--1 -->
+							<div class="left">
+									<span>추가이미지</span>
+									<label class="upload-display" for="a_file">
+											<span class="upload-thumb-wrap">
+													<img class="upload-thumb" src="../img/item_main.jpg">
+											</span>
+									</label>
+									<input class="upload-name" value="파일선택" disabled="disabled">
+									<input type="file" name="file" id="a_file" class="upload-hidden">
+									<input type="hidden" value="">
+									<input type="hidden" value="">
+									<button type="button" class="normal_btn" style="display: block;">삭제</button>
+									
+							</div>
+							<div class="left">
+									<span>추가이미지</span>
+									<label class="upload-display" for="b_file">
+											<span class="upload-thumb-wrap">
+													<img class="upload-thumb" src="../img/plus_btn.png">
+											</span>
+									</label>
+									<input class="upload-name" value="파일선택" disabled="disabled">
+									<input type="file" name="file" id="b_file" class="upload-hidden">
+									<input type="hidden" value="">
+									<input type="hidden" value="">
+									<button type="button" class="normal_btn" style="display: block;">삭제</button>
+							</div>
+							<div class="left">
+									<span>추가이미지</span>
+									<label class="upload-display" for="c_file">
+											<span class="upload-thumb-wrap">
+													<img class="upload-thumb" src="../img/plus_btn.png">
+											</span>
+									</label>
+									<input class="upload-name" value="파일선택" disabled="disabled">
+									<input type="file" name="file" id="c_file" class="upload-hidden">
+									<input type="hidden" value="">
+									<input type="hidden" value="">
+									<button type="button" class="normal_btn" style="display: block;">삭제</button>
+							</div>
+
+					</div>
+					</div>
+				</div>
+	
+
+				<div class="btn_area">
+					<a href="수정!!" class="save" >수정</a>
+				</div>
+
+			</div>
+		</div>
+	</div><!-- end wrap -->
+	</th:block>
+
+	<!--이페이지에서 사용할 js는 block구문 밖에 선언-->
+	<script src="../js/modal.js"></script>
+
+
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.coding404.myweb.TestMapper">
+
+    <select id="joinOne" resultType="MemoVO">
+        SELECT *
+        FROM EX_MEMO M
+        LEFT JOIN EX_USERS U
+        ON M.WRITER = U.ID
+    </select>
+
+    <!--
+        1:N 형식에서는 조인의 OMR 작업을 직접 표기함
+        반환 타입을 resultMap
+
+        id = 식별자
+        type = 리턴 타입
+        column = 데이터베이스 컬럼명
+        property = vo의 속성명
+    -->
+    <select id="joinTwo" resultMap="myResult">
+        SELECT *
+        FROM EX_USERS U
+        LEFT JOIN EX_MEMO M
+        ON U.ID = M.WRITER
+    </select>
+
+    <resultMap id="myResult" type="UsersVO">
+        <result column="id" property="id"/>
+        <result column="pw" property="pw"/>
+        <result column="name" property="name"/>
+        <collection property="memoList" resultMap="myList"/>
+    </resultMap>
+    <resultMap id="myList" type="MemoVO">
+        <result column="mno" property="mno"/>
+        <result column="writer" property="writer"/>
+        <result column="memo" property="memo"/>
+    </resultMap>
+</mapper>

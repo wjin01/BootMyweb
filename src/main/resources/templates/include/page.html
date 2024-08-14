@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<th:blcok th:fragment="page(pageVO)">
+    <ul>
+        <!-- 4. 맨 앞으로 -->
+        <th:block th:if="${pageVO.total != 0}">
+            <li><a th:href="@{productList(page = 1,
+                                          amount = ${pageVO.amount},
+                                          searchName = ${pageVO.cri.searchName},
+                                          searchContent = ${pageVO.cri.searchContent},
+                                          searchPrice = ${pageVO.cri.searchPrice},
+                                          startDate = ${pageVO.cri.startDate},
+                                          endDate = ${pageVO.cri.endDate}
+                                          )}"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a></li>
+        </th:block>
+
+        <!-- 3. 이전버튼-->
+        <th:block th:if="${pageVO.prev}">
+            <li style="margin-right:5px;">
+                <a th:href="@{productList(page = ${pageVO.start - 1},
+                                          amount = ${pageVO.amount},
+                                          searchName = ${pageVO.cri.searchName},
+                                          searchContent = ${pageVO.cri.searchContent},
+                                          searchPrice = ${pageVO.cri.searchPrice},
+                                          startDate = ${pageVO.cri.startDate},
+                                          endDate = ${pageVO.cri.endDate}
+                                          )}"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+            </li>
+        </th:block>
+
+        <!-- 1. 페이지네이션 -->
+        <th:block th:each="page : ${pageVO.pageList}">
+            <li th:class="${pageVO.page == page ? 'on' : '' }">
+                <a th:href="@{productList(page = ${page},
+                                          amount = ${pageVO.amount},
+                                          searchName = ${pageVO.cri.searchName},
+                                          searchContent = ${pageVO.cri.searchContent},
+                                          searchPrice = ${pageVO.cri.searchPrice},
+                                          startDate = ${pageVO.cri.startDate},
+                                          endDate = ${pageVO.cri.endDate}
+                                          )}">[[${page}]]</a></li>
+        </th:block>
+
+        <!--2. 다음버튼 -->
+        <th:block th:if="${pageVO.next}">
+            <li style="margin-left:5px;">
+                <a th:href="@{productList(page = ${pageVO.end + 1},
+                                          amount = ${pageVO.amount},
+                                          searchName = ${pageVO.cri.searchName},
+                                          searchContent = ${pageVO.cri.searchContent},
+                                          searchPrice = ${pageVO.cri.searchPrice},
+                                          startDate = ${pageVO.cri.startDate},
+                                          endDate = ${pageVO.cri.endDate}
+                                          )}"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+            </li>
+        </th:block>
+
+        <!-- 5. 맨 뒤로-->
+        <th:blcok th:if="${pageVO.total != 0}">
+            <li>
+                <a th:href="@{productList(page = ${pageVO.realEnd},
+                                          amount = ${pageVO.amount},
+                                          searchName = ${pageVO.cri.searchName},
+                                          searchContent = ${pageVO.cri.searchContent},
+                                          searchPrice = ${pageVO.cri.searchPrice},
+                                          startDate = ${pageVO.cri.startDate},
+                                          endDate = ${pageVO.cri.endDate}
+                                          )}"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+            </li>
+        </th:blcok>
+
+    </ul>
+</th:blcok>
