@@ -18,11 +18,11 @@
         판매자 로그인
       </div>
   
-      <form class="loginForm">
+      <form class="loginForm" action="loginForm" method="post">
         <p>국내 판매자(개인/사업자) 또는 해외 개인 판매자로 등록되어 있는 경우에만 로그인이 가능합니다.</p>
-        <input class="inputText" type="text" placeholder="아이디"></input>
-        <input class="inputText" type="text" placeholder="패스워드"></input>
-        <button type="button" class="loginBtn">로그인</button>
+        <input class="inputText" type="text" placeholder="아이디" name="id"></input>
+        <input class="inputText" type="text" placeholder="패스워드" name="pw"></input>
+        <button type="submit" class="loginBtn">로그인</button>
         <button type="button" class="loginBtn kakaoBtn"></button>
       </form>
   

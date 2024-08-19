@@ -110,4 +110,9 @@ public class ProductServiceImpl implements ProductService {
     public ArrayList<CategoryVO> getCategoryChild(CategoryVO vo) {
         return productMapper.getCategoryChild(vo);
     }
+
+    @Override
+    public ArrayList<ProductUploadVO> getImgs(int prodID) {
+        return productMapper.getImgs(prodID);
+    }
 }

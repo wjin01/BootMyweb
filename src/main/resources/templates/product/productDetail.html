@@ -50,26 +50,28 @@
                                                     <tr>
                                                         <th>메인사진</th>
                                                         <td colspan="3">
+
+                                                            [[${imgs}]]
+                                                            <!--
+                                                            src 걍로에는 컨트롤러의 요청 경로를 적음
+                                                            컨트롤러에서는 이미지 byte 코드를 구해서 응답
+                                                            -->
+
                                                             <!--미리보기 폼-->
                                                             <div class="blockContent">
                                                                 <div class="productText">이미지 수정은 목록을 이용해주세요</div>
                                                                 <div class="productImg">
-                                                                    <div class="imgItem">
-                                                                        <span class="imgKind">대표이미지</span>
+
+                                                                    <div class="imgItem" th:each="vo : ${imgs}">
+                                                                        <span class="imgKind"><a th:href="@{/download/{filepath}/{uuid}/{filename}(filepath=${vo.filepath}, uuid=${vo.uuid}, filename=${vo.filename} )}" download>대표이미지(다운로드)</a></span>
                                                                         <div class="imgWrap">
                                                                             <div class="imgArea">
-                                                                                <img src="../img/item_main.jpg">
+                                                                                <img th:src="@{/display/{filepath}/{uuid}/{filename}(filepath=${vo.filepath}, uuid=${vo.uuid}, filename=${vo.filename} )}">
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="imgItem">
-                                                                        <span class="imgKind">배너이미지</span>
-                                                                        <div class="imgWrap">
-                                                                            <div class="imgArea">
-                                                                                <img src="../img/item_banner.jpg">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
+
+                                                                    <!--
                                                                     <div class="imgItem">
                                                                         <span class="imgKind">배너이미지</span>
                                                                         <div class="imgWrap">
@@ -86,6 +88,15 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
+                                                                    <div class="imgItem">
+                                                                        <span class="imgKind">배너이미지</span>
+                                                                        <div class="imgWrap">
+                                                                            <div class="imgArea">
+                                                                                <img src="../img/item_banner.jpg">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    -->
                                                                     
                                                                 </div>
                                                             </div>
